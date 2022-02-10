@@ -4,21 +4,24 @@ import './App.css';
 
 function App() {
 
+    const [infoAPI, setInfoAPI] = useState([]);
     const [characterList, setCharacterList] = useState([]);
     const [next, setNext] = useState(1);
     
     useEffect(() => {
+
         fetch(`https://rickandmortyapi.com/api/character/?page=${next}`)
             .then((response) => response.json())
-            .then((response) => setCharacterList(response.results))
+            .then((response) => {
+                setCharacterList(response.results)
+                setInfoAPI(response.info)
+            })
             .catch(error => console.log(error));
+
     }, [next]);
 
-    console.log(next)
-
     function nextPage() {
-        if(characterList.length === 20) {
-            console.log(characterList.length)
+        if(next < infoAPI.pages) {
             setNext(next + 1);
         }
     }

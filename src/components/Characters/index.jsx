@@ -8,9 +8,10 @@ function Characters({ characterList, nextPage, previousPage }) {
         <>
 
             <h1>Meus personagens</h1>
-
-            <button onClick={previousPage}>Página anterior</button>
-            <button onClick={nextPage}>Próxima página</button>
+            <div className="buttonContainer">
+                <button onClick={previousPage}>Página anterior</button>
+                <button onClick={nextPage}>Próxima página</button>
+            </div>
 
             <ul>
 
